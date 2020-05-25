@@ -1,0 +1,38 @@
+{
+  "name": "react-navigator-geoposition",
+  "version": "1.0.0",
+  "description": "A React geopositioning hook",
+  "keywords": [
+    "react",
+    "navigator",
+    "geolocation",
+    "geopositioning",
+    "hook",
+    "permission"
+  ],
+  "main": "lib/index.js",
+  "repository": "https://github.com/dev-judsoncruz/react-navigator-geoposition",
+  "author": "Judson Cruz <judson.play1@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "peerDependencies": {
+    "react": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "babel-core": "^6.26.3",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
