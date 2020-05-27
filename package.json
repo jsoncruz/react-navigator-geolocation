@@ -14,7 +14,7 @@
   "repository": "https://github.com/dev-judsoncruz/react-navigator-geolocation",
   "author": "Judson Cruz <judson.play1@gmail.com>",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "scripts": {
     "build": "tsc -p ."
   },
