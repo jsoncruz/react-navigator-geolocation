@@ -112,11 +112,11 @@ export default (
   }, []);
 
   useMemo(() => {
-    navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
-      if (state === "denied") {
-        dispatch({ type: "enable", value: false });
-      } else {
-        if ("geolocation" in navigator) {
+    if ("geolocation" in navigator) {
+      navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
+        if (state === "denied") {
+          dispatch({ type: "enable", value: false });
+        } else {
           if (!suppress) {
             if (watchMode) {
               if (!patch.watchId) {
@@ -137,11 +137,13 @@ export default (
           } else {
             dispatch({ type: "suppressed", value: true });
           }
-        } else {
-          dispatch({ type: "available", value: false });
         }
-      }
-    });
+      }).catch((error) => {
+        throw new Error(error);
+      });
+    } else {
+      dispatch({ type: "available", value: false });
+    }
     // eslint-disable-next-line
   }, [suppress, watchMode, patch.watchId]);
 
