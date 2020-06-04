@@ -1,6 +1,6 @@
 {
   "name": "react-navigator-geolocation",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A react geolocation hook",
   "keywords": [
     "react",
@@ -11,7 +11,7 @@
     "permission"
   ],
   "main": "lib/index.js",
-  "repository": "https://github.com/dev-judsoncruz/react-navigator-geolocation",
+  "repository": "https://github.com/jsoncruz/react-navigator-geolocation",
   "author": "Judson Cruz <judson.play1@gmail.com>",
   "license": "MIT",
   "scripts": {
