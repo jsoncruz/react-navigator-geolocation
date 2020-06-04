@@ -1,22 +1,26 @@
-# react-navigator-geolocation  
-A React geolocationing hook  
+# react-navigator-geolocation
+
+A react geolocationing hook  
 
 ## Installation  
 
 **Yarn**  
+
 ```console
 $ yarn add react-navigator-geolocation
 ```
 
 **Npm**  
+
 ```console
 $ npm install react-navigator-geolocation
 ```
-\
-## Examples  
+
+## Examples
+
 [![Edit distracted-hellman-8ychm](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/distracted-hellman-8ychm?fontsize=14&hidenavigation=1&theme=dark)  
 *Simple syntax*  
-\
+
 ```TSX
 import React from "react";
 import useGeolocation from "react-navigator-geolocation";
@@ -38,8 +42,9 @@ export default App;
 
 [![Edit cold-voice-ofn2p](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/cold-voice-ofn2p?fontsize=14&hidenavigation=1&theme=dark)  
 *Suppressed on mountage*  
-\
+
 ```TSX
+
 import React from "react";
 import useGeolocation from "react-navigator-geolocation";
 
@@ -66,9 +71,9 @@ const App: React.FC = () => {
 
 export default App;
 ```  
-\
+
 ## Parameters  
-\
+
 |      Param      | Type    | Default | Definition |
 | :-------------- | :-----: | :-----: | :--------- |
 | suppressOnMount | boolean |  `false`  | Suppress request on mountage |
@@ -78,6 +83,7 @@ export default App;
 > useGeolocation({ suppressOnMount: false, positionOptions: { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }, watchMode: false })
 
 ## Response
+
 | Variable | Type | Definition |
 | :------: | :--: | :--------- |
 |   isAvailable   | boolean | Browser does support Geolocation API |
@@ -86,7 +92,7 @@ export default App;
 |    isExpired    | boolean | If request is timed out |
 |     coords      | object  | [Read more](https://developer.mozilla.org/pt-BR/docs/Web/API/GeolocationCoordinates)  
 | suppressRequest | method  | It receives a boolean as value |
-|     watchId     | boolean | If watchMode is enabled you'll get the id of watching
+|     watchId     | number  | If watchMode is enabled you'll get the id of watching
 
 > const { isAvailable, isSupressed, isEnabled, isExpired, coords, suppressRequest, watchId } = useGeolocation(...)
 
