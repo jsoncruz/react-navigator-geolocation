@@ -1,6 +1,6 @@
-import { useState, useReducer, useCallback, useMemo } from "react";
+import { useState, useReducer, useCallback, useEffect } from "react";
 
-export type GeolocationOptionsProps = {
+export interface GeolocationOptionsProps {
   suppressOnMount?: boolean;
   positionOptions?: {
     enableHighAccuracy: boolean;
@@ -10,7 +10,7 @@ export type GeolocationOptionsProps = {
   watchMode?: boolean;
 };
 
-export type CoordinatesProps = {
+export interface CoordinatesProps {
   coords: {
     latitude: number | null;
     longitude: number | null;
@@ -22,7 +22,7 @@ export type CoordinatesProps = {
   };
 };
 
-export type GeolocationProps = {
+export interface GeolocationProps {
   coords: CoordinatesProps["coords"] | undefined;
   isEnabled?: boolean;
   isExpired?: boolean;
@@ -111,7 +111,7 @@ export default (
     }
   }, []);
 
-  useMemo(() => {
+  useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
         if (state === "denied") {
