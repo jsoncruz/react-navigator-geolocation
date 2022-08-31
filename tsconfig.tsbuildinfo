@@ -227,13 +227,8 @@
         "affectsGlobalScope": true
       },
       "./src/index.tsx": {
-        "version": "cafd905f09c9ba0fe0ace5dd2a269a1e2e54a695438836b7a6baa59828c7494b",
-        "signature": "de877b4383cafcce40337eda1ba80b3fd8cfbe23e65c9661e8e322b0c8910ec4",
-        "affectsGlobalScope": false
-      },
-      "./node_modules/@types/react-dom/index.d.ts": {
-        "version": "8483a29c17f7feb768a1f4333cf12ccf1e7341bd89dadcf407e012d5315228d0",
-        "signature": "8483a29c17f7feb768a1f4333cf12ccf1e7341bd89dadcf407e012d5315228d0",
+        "version": "0a4f61bebc05a62ed6d1fe6821b031fd371f415f645f83e92a7b04e8f485069d",
+        "signature": "faf1d2b5e547a320bd3c39c8a0519e8869d6c4622d838c67371225dfb958d989",
         "affectsGlobalScope": false
       }
     },
@@ -268,9 +263,6 @@
       "configFilePath": "./tsconfig.json"
     },
     "referencedMap": {
-      "./node_modules/@types/react-dom/index.d.ts": [
-        "./node_modules/@types/react/index.d.ts"
-      ],
       "./node_modules/@types/react/index.d.ts": [
         "./node_modules/@types/prop-types/index.d.ts",
         "./node_modules/@types/react/global.d.ts",
@@ -281,9 +273,6 @@
       ]
     },
     "exportedModulesMap": {
-      "./node_modules/@types/react-dom/index.d.ts": [
-        "./node_modules/@types/react/index.d.ts"
-      ],
       "./node_modules/@types/react/index.d.ts": [
         "./node_modules/@types/prop-types/index.d.ts",
         "./node_modules/@types/react/global.d.ts",
@@ -292,7 +281,6 @@
     },
     "semanticDiagnosticsPerFile": [
       "./node_modules/@types/prop-types/index.d.ts",
-      "./node_modules/@types/react-dom/index.d.ts",
       "./node_modules/@types/react/global.d.ts",
       "./node_modules/@types/react/index.d.ts",
       "./node_modules/csstype/index.d.ts",

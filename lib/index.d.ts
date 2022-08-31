@@ -1,4 +1,4 @@
-export declare type GeolocationOptionsProps = {
+export interface GeolocationOptionsProps {
     suppressOnMount?: boolean;
     positionOptions?: {
         enableHighAccuracy: boolean;
@@ -6,8 +6,8 @@ export declare type GeolocationOptionsProps = {
         maximumAge: number;
     };
     watchMode?: boolean;
-};
-export declare type CoordinatesProps = {
+}
+export interface CoordinatesProps {
     coords: {
         latitude: number | null;
         longitude: number | null;
@@ -17,8 +17,8 @@ export declare type CoordinatesProps = {
         heading: number | null;
         speed: number | null;
     };
-};
-export declare type GeolocationProps = {
+}
+export interface GeolocationProps {
     coords: CoordinatesProps["coords"] | undefined;
     isEnabled?: boolean;
     isExpired?: boolean;
@@ -26,7 +26,7 @@ export declare type GeolocationProps = {
     isSupressed?: boolean;
     suppressRequest: (bool: boolean) => void;
     watchId: number | undefined;
-};
+}
 declare const _default: ({ suppressOnMount, positionOptions, watchMode, }?: GeolocationOptionsProps) => GeolocationProps;
 export default _default;
 //# sourceMappingURL=index.d.ts.map

@@ -8,7 +8,7 @@ export interface GeolocationOptionsProps {
     maximumAge: number;
   };
   watchMode?: boolean;
-};
+}
 
 export interface CoordinatesProps {
   coords: {
@@ -20,7 +20,7 @@ export interface CoordinatesProps {
     heading: number | null;
     speed: number | null;
   };
-};
+}
 
 export interface GeolocationProps {
   coords: CoordinatesProps["coords"] | undefined;
@@ -30,7 +30,7 @@ export interface GeolocationProps {
   isSupressed?: boolean;
   suppressRequest: (bool: boolean) => void;
   watchId: number | undefined;
-};
+}
 
 const geolocationDefault = {
   suppressOnMount: false,
@@ -42,6 +42,7 @@ const geolocationDefault = {
   watchMode: false,
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default (
   {
     suppressOnMount = geolocationDefault.suppressOnMount,
@@ -95,7 +96,7 @@ export default (
     }
   }, []);
 
-  const GeolocationPositionError = useCallback((error: PositionError) => {
+  const GeolocationPositionError = useCallback((error: any) => {
     switch (error.code) {
       case error.PERMISSION_DENIED:
         dispatch({ type: "enable", value: false });
@@ -106,6 +107,7 @@ export default (
       case error.TIMEOUT:
         dispatch({ type: "timedout", value: true });
         break;
+
       default:
         throw new Error("Position request got an error");
     }
@@ -113,34 +115,61 @@ export default (
 
   useEffect(() => {
     if ("geolocation" in navigator) {
-      navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
-        if (state === "denied") {
-          dispatch({ type: "enable", value: false });
-        } else {
-          if (!suppress) {
-            if (watchMode) {
-              if (!patch.watchId) {
-                const watchId = navigator.geolocation.watchPosition(
-                  GeolocationPosition,
-                  GeolocationPositionError,
-                  { ...positionOptions }
-                );
-                dispatch({ type: "watch", watchId });
-              }
-            } else {
-              navigator.geolocation.getCurrentPosition(
+      // Validation:  Safari Browser
+      if (!(navigator.permissions && navigator.permissions.query)) {
+        if (!suppress) {
+          if (watchMode) {
+            if (!patch.watchId) {
+              const watchId = navigator.geolocation.watchPosition(
                 GeolocationPosition,
                 GeolocationPositionError,
                 { ...positionOptions }
               );
+              dispatch({ type: "watch", watchId });
             }
           } else {
-            dispatch({ type: "suppressed", value: true });
+            navigator.geolocation.getCurrentPosition(
+              GeolocationPosition,
+              GeolocationPositionError,
+              { ...positionOptions }
+            );
           }
+        } else {
+          dispatch({ type: "suppressed", value: true });
         }
-      }).catch((error) => {
-        throw new Error(error);
-      });
+      } else {
+        navigator.permissions
+          .query({ name: "geolocation" })
+          .then(({ state }) => {
+            if (state === "denied") {
+              dispatch({ type: "enable", value: false });
+            } else {
+              if (!suppress) {
+                if (watchMode) {
+                  if (!patch.watchId) {
+                    const watchId = navigator.geolocation.watchPosition(
+                      GeolocationPosition,
+                      GeolocationPositionError,
+                      { ...positionOptions }
+                    );
+                    dispatch({ type: "watch", watchId });
+                  }
+                } else {
+                  navigator.geolocation.getCurrentPosition(
+                    GeolocationPosition,
+                    GeolocationPositionError,
+                    { ...positionOptions }
+                  );
+                }
+              } else {
+                dispatch({ type: "suppressed", value: true });
+              }
+            }
+          })
+          .catch((error) => {
+            throw new Error(error);
+          });
+      }
     } else {
       dispatch({ type: "available", value: false });
     }
